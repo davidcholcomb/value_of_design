@@ -1,172 +1,80 @@
-# Project 2 - Ames Housing Data and Kaggle Challenge
-
-### Welcome to Project 2! Let's model!
-
-<img src="https://media.giphy.com/media/l3nW69ahAX7F6Pcsw/giphy.gif" style="float: center; margin: 10px; height: 100px">
-
-**Primary Learning Objectives:**
-1. Creating and iteratively refining a regression model.
-2. Using [Kaggle](https://www.kaggle.com/t/0e2a90842a5b4d0e92e898996f426139) to practice the modeling process.
-3. Providing business insights through reporting and presentation.
-
-You are tasked with creating a machine learning model based on the Ames Housing Dataset. This model will predict the price of a house at sale.
-
-The Ames Housing Dataset is contains over 70 columns of different features relating to houses.
-
----
-## Deliverables 
-
-- We are hosting a competition on Kaggle to give you the opportunity to practice your modeling skills. You must upload at least one of your model's predictions to the competition.
-- You will submit a technical report and a presentation in your submission Repo. 
-- You will present your findings to your classmates and instructors.
-
-**You may find that the best model for Kaggle is not the best model to address your data science problem.**
+# SAT Score Analysis
 
 
-## Set up
-
-Before you begin working on this project, please do the following:
-
-1. Sign up for an account on [Kaggle](https://www.kaggle.com/)
-2. **IMPORTANT**: Click here: [Regression Challenge Sign Up](https://www.kaggle.com/t/0e2a90842a5b4d0e92e898996f426139) to **join** the competition (otherwise you will not be able to make submissions!)
-3. Review the material on the Kaggle challenge site.
-4. Review the [data description](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt).
-
-## The Modeling Process
-
-1. The train dataset has all of the columns that you will need to generate and refine your models. The test dataset has all of those columns except for the target that you are trying to predict in your Regression model.
-2. Generate your regression model using the training data. We expect that within this process, you'll be making use of:
-    - train-test split
-    - cross-validation / grid searching for hyperparameters
-    - strong exploratory data analysis to question correlation and relationship across predictive variables
-    - code that reproducibly and consistently applies feature transformation (such as the preprocessing library)
-3. Predict the values for your target column in the test dataset and submit your predictions to Kaggle to see how your model does against unknown data.
-    - **Note**: Kaggle expects to see your submissions in a specific format. Check the challenge's page to make sure you are formatting your CSVs correctly!
-    - **You are limited to models you've learned in class**. In other words, you cannot use XGBoost, Neural Networks or any other more advanced model for this project.
-4. Evaluate your models!
-    - consider your evaluation metrics
-    - consider your baseline score
-    - how can your model be used for inference?
-    - why do you believe your model will generalize to new data?
-
-## Submission
-
-- Presentations will start at 9:00a PST on **Friday January 15th**. 
-- Your technical report must be submitted in your submission repository by 11:59p PST on **Friday January 15th**.
-- The Kaggle competition will close by midnight **Friday January 15**.
-
-Your technical report must include:
-
-- A README.md (that isn't this file)
-- Jupyter notebook(s) with your analysis and models (renamed to describe your project)
-- Data files
-- Presentation slides
-- Any other necessary files (images, etc.)
+ ## Contents:
+ 
+- [Problem Statement](#Problem-Statement)  
+- [Data](#Data)
+- [Data Dictionary](#Data-Dictionary)
+- [Outside Research](#Research)
+- [Data Analysis](#Data-Analysis)
+- [Conclusions and Recommendations](#Conclusions-and-Recommendations)
 
 
----
+## Problem Statement:
 
-## Presentation Structure
+I am exploring the financial impact that good architectural design can have on home values. 
 
-- These presentations are expected to be 7-9min long
-- Use Google Slides or some other presentation system (Keynote, Powerpoint, etc).
-- Consider your audience. 
-- Start with the **problem** you are solving.
-- Use visuals that are appropriately scaled and interpretable.
-- Talk about your procedure/methodology (high level).
-- Talk about your primary findings.
-- Make sure you provide **clear recommendations** that follow logically from your analyses and narrative and answer your data science problem.
 
-Be sure to rehearse and time your presentation before class.
+## Background:
 
----
+Architects feel they are adding value but generally don't have any hard numbers to back it up. Using Ames, Iowa as a case study I am investigating what architects can take advantage of to create better designs while increasing value for the client.
 
-## Rubric
-Your local instructor will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
 
-**Scores will be out of 27 points based on the 9 items in the rubric.** <br>
-*3 points per section*<br>
+## Data
 
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
+* [train](./datasets/train.csv): Original housing data for Ames, I used for training the model
+* [test](./datasets/test.csv): Original housing data for Ames, I used for testing the model
+* [train_clean](./datasets/train_clean.csv): Null values removed and many objects converted to numeric values, used for training the model
+* [train_clean_outlier](./datasets/train_clean_outlier.csv): Model after removing the outliers, used for training the model
+* [train_clean](./datasets/train.csv): Null values removed and many objects converted to numeric values, used for testing the model
+* [train lasso](./datasets/train_lasso.csv): Contains one hot encoded features, I used for training the model using lasso
+* [test lasso](./datasets/test_lasso.csv): Contains one hot encoded features, I used for testing the model using lasso
 
-### The Data Science Process
+## Data Dictionary
 
-**Problem Statement**
-- Is it clear?
-- Is it reasonable?
-- Is the audience clearly identified?
+The original [data dictionary](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt) that came with the training csv can be found here.
 
-**Data Cleaning and EDA**
-- Are missing values dealt with?
-- Are important distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are possible modeling insights to investigate discussed?
+The [data dictionary](data_dictionary.md) that I used in training the model can be found here.
 
-**Preprocessing and Modeling**
-- Are categorical variables one-hot encoded or encoded in another logical way?
-- Are features engineered?
-- Have the data been scaled appropriately?
-- Does the student properly split the data for validation/training purposes?
-- Does the student use feature selection to remove noisy or multi-collinear features?
-- Does the student test and evaluate a variety of model types (**AT MINIMUM:** linear regression, lasso, and ridge)?
-- Does the student defend their choice of the best model for this data and problem statement?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
+## Outside Research:
 
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem statement?
-- Is more than one metric uses to better assess performance?
-- Does the student correctly interpret the results of their model for purposes of inference?
+Source: https://home-builders.promatcher.com/cost/ames-ia-home-builders-costs-prices.aspx
 
-**Conclusion and Recommendations**
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Is it clear how the final recommendations were reached? Do they follow logically?
-- Does the student address how their suggestions will likely benefit stakeholders?
-- Are future steps to move the project forward identified?
+Data used in the presentation with figures for construction costs in Ames, Iowa.
+    
 
-### Organization and Professionalism
+## Data Analysis:
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths (so someone can replicate your analysis)?
-- Does the README provide a good executive summary of the project?
-- Is Markdown formatting and comments used appropriately to communicate in the notebooks?
-- Are files & directories organized?
-- Are unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
+I started by creating a box plot to visualize the distribution of our target variable, Sales Price.
 
-**Visualizations**
-- Are sufficient helpful visualizations provided?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+![Box Plot: Overall Sales Prices](images/box_plot_home_prices.png)
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follow general best practices?
+I then made two heatmaps, one to see overall correlations and intercorrelations, and the other to see what different correlations exist with Sales Price.
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does the body of the presentation building address the problem statement and lead to the conclusion?
-- Is the conclusion/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Does the student deliver their message clearly?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations useful for supporting conclusions/explaining findings?
+![Correlation Heatmap: Overall](images/overall_heatmap.png)
+![Correlation Heatmap: To Sale Price (Target)](images/saleprice_heatmap.png)
 
-In order to pass the project, students must earn a minimum score of 1 for each category.
-- Earning below a 1 in one or more of the above categories would result in a failing project.
-- While a minimum of 1 in each category is the required threshold for graduation, students should aim to earn at least an average of 1.5 across each category. An average score below 1.5, while it may be passing, means students may want to solicit specific feedback in order to significantly improve the project before showcasing it as part of a portfolio or the job search.
+After making a list of potential features that were highly correlated with the target variable, I made a pair plot to see if the features also had a linear relationship with Sales Price.
 
-### REMEMBER:
+![Pair Plot](images/pair_plot.png)
 
-This is a learning environment and you are encouraged to try new things, even if they don't work out as well as you planned! While this rubric outlines what we look for in a _good_ project, it is up to you to go above and beyond to create a _great_ project. **Learn from your failures and you'll grow!**
+After adding a few columns that had potential to be exponentially related to Sales Price I ran a Linear Regression model and calculated the Root Mean Squared Error.
+
+To analyze the coefficients I created a scatter plot:
+
+![coefficient plot](images/coefficient values.png)
+
+I then filtered the list of features further by only using the coefficients that affected the price by over $100 per unit change, holding all else constant.
+
+I ran a new Linear Regression model on the data and calculated a new (and slightly higher) Root Mean Squared Error.
+
+I then one hot encoded features and used Lasso to determine the optimal Features to use in the model. After calculating the RMSE, I then ran a standard Linear Regression using only the features from Lasso and without the penalty score, acheived the highest score in the notebook.
+    
+## Conclusions and Recommendations:
+
+I would recommend to architects that they be intelligent when creating an initial layout for a home. Simple decisions, such as locating the kitchen above ground or adding a fireplace, have significant impact on the overall value of the home.
+
+The overall quality of the home has the greatest impact, so it is in the architect's and client's best interests to move up from an average quality to an excellent quality.
+
+However, the average construction costs in Ames puts the client already towards the upper levels of Sales Prices when they decide to build their home in the first place. Therefore, it is the architect's responsibility to be precise when making recommendations to upgrade.
