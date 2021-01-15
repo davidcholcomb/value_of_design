@@ -1,4 +1,4 @@
-# SAT Score Analysis
+# Ames Home Price Analysis and Predictions using Linear Regression
 
 
  ## Contents:
