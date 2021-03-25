@@ -48,16 +48,16 @@ Data used in the presentation with figures for construction costs in Ames, Iowa.
 
 I started by creating a box plot to visualize the distribution of our target variable, Sales Price.
 
-![Box Plot: Overall Sales Prices](images/box_plot_home_prices.png)
+![Box Plot: Overall Sales Prices](./images/box_plot_home_prices.png)
 
 I then made two heatmaps, one to see overall correlations and intercorrelations, and the other to see what different correlations exist with Sales Price.
 
-![Correlation Heatmap: Overall](images/overall_heatmap.png)
-![Correlation Heatmap: To Sale Price (Target)](images/saleprice_heatmap.png)
+![Correlation Heatmap: Overall](./images/overall_heatmap.png)
+![Correlation Heatmap: To Sale Price (Target)](./images/saleprice_heatmap.png)
 
 After making a list of potential features that were highly correlated with the target variable, I made a pair plot to see if the features also had a linear relationship with Sales Price.
 
-![Pair Plot](images/pair_plot.png)
+![Pair Plot](./images/pair_plot.png)
 
 After adding a few columns that had potential to be exponentially related to Sales Price I ran a Linear Regression model and calculated the Root Mean Squared Error.
 
